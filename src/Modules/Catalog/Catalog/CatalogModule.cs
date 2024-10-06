@@ -6,21 +6,24 @@ public static class CatalogModule
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration configuration)
     {
         // Register your services 
-        //services
-        //    .AddApplicationServices()
-        //    .AddInfrastructureServices(configuration)
-        //    .AddApiServices(configuration);
+
+        // Data - infrastructure services
+        var connectionString = configuration.GetConnectionString("Database");
+        services.AddDbContext<CatalogDbContext>(options =>
+        {
+            options.UseNpgsql(connectionString);
+        });
 
         return services;
     }
 
     public static IApplicationBuilder UseCatalogModule(this IApplicationBuilder app)
     {
-        // configure http pipeline
-        //app
-        // .UseApplicationServices()
-        // .UseInfrastructureServices(configuration)
-        // .UseApiServices(configuration);
+        // configure HTTP pipeline
+
+        // use data - Infrastructure services
+        app.UseMigration<CatalogDbContext>();
+
         return app;
     }
 }
