@@ -7,7 +7,7 @@ public static class Extensions
         where TContext : DbContext
     {
         MigratieDatabaseAsync<TContext>(app).GetAwaiter().GetResult();
-
+        SeedDataAsync(app.ApplicationServices).GetAwaiter().GetResult();
         return app;
     }
 
@@ -16,5 +16,15 @@ public static class Extensions
         var scope = app.ApplicationServices.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<TContext>();
         await context.Database.MigrateAsync();
+    }
+
+    private static async Task SeedDataAsync(IServiceProvider applicationServices)
+    {
+        using var scope = applicationServices.CreateScope();
+        var seeders = scope.ServiceProvider.GetServices<IDataSeeder>();
+        foreach (var seeder in seeders)
+        {
+            await seeder.SeedAllAync();
+        }
     }
 }

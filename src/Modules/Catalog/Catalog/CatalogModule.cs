@@ -14,6 +14,8 @@ public static class CatalogModule
             options.UseNpgsql(connectionString);
         });
 
+        services.AddScoped<IDataSeeder, CatalogDataSeeder>();
+
         return services;
     }
 
