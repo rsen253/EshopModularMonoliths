@@ -11,6 +11,7 @@ public static class CatalogModule
         var connectionString = configuration.GetConnectionString("Database");
         services.AddDbContext<CatalogDbContext>(options =>
         {
+            options.AddInterceptors(new AuditableEntityInterceptor());
             options.UseNpgsql(connectionString);
         });
 
