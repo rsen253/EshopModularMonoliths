@@ -4,6 +4,7 @@ global using Microsoft.AspNetCore.Builder;
 global using Microsoft.EntityFrameworkCore;
 global using System.Reflection;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Logging;
 
 global using Shared.DDD;
 global using Catalog.Products.Models;

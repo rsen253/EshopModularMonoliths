@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Shared.DDD;
-
+﻿
 namespace Shared.Data.Interceptor;
 
-public class AuditableEntityInterceptor : SaveChangesInterceptor
+public class AuditableEntityInterceptor(ILogger<AuditableEntityInterceptor> logger) : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
@@ -30,11 +27,12 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
                 entry.Entity.CreatedAt = DateTime.UtcNow;
             }
 
-            if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
+            if (entry.State != EntityState.Added || entry.HasChangedOwnedEntities())
             {
                 entry.Entity.LastModifiedBy = "rahul";
                 entry.Entity.LastModified = DateTime.UtcNow;
             }
+            logger.LogInformation($"Data {entry.State}");
         }
     }
 

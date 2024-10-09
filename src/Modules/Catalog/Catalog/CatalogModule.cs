@@ -1,4 +1,5 @@
-﻿
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+
 namespace Catalog;
 
 public static class CatalogModule
@@ -8,10 +9,20 @@ public static class CatalogModule
         // Register your services 
 
         // Data - infrastructure services
-        var connectionString = configuration.GetConnectionString("Database");
-        services.AddDbContext<CatalogDbContext>(options =>
+        services.AddMediatR(config =>
         {
-            options.AddInterceptors(new AuditableEntityInterceptor());
+            config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
+
+        var connectionString = configuration.GetConnectionString("Database");
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        
+        services.AddDbContext<CatalogDbContext>((serviceProvider, options) =>
+        {
+            //var logger = serviceProvider.GetRequiredService<ILogger<AuditableEntityInterceptor>>();
+            //options.AddInterceptors(new AuditableEntityInterceptor(logger));
+            options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>()!);
             options.UseNpgsql(connectionString);
         });
 
