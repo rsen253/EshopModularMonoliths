@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-
+﻿
 namespace Catalog;
 
 public static class CatalogModule

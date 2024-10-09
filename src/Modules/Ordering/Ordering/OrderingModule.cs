@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
+﻿
 namespace Ordering;
 
 public static class OrderingModule
