@@ -8,6 +8,9 @@ global using Mapster;
 global using MediatR;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.EntityFrameworkCore.Diagnostics;
+global using Carter;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Routing;
 
 global using Shared.DDD;
 global using Catalog.Products.Models;

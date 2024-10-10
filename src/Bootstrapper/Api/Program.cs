@@ -1,4 +1,7 @@
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCarterWithAssemblies(typeof(CatalogModule).Assembly);
 
 // add service configuration. This will register services in the DI
 builder.Services
@@ -10,6 +13,8 @@ builder.Services
 
 // Configure HTTP request pipeline
 var app = builder.Build();
+
+app.MapCarter();
 
 app.UseCatalogModule()
     .UseBasketModule()
