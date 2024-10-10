@@ -9,13 +9,13 @@ builder.Services
     .AddBasketModule(builder.Configuration)
     .AddOrderingModule(builder.Configuration);
 
-
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 // Configure HTTP request pipeline
 var app = builder.Build();
 
 app.MapCarter();
-
+app.UseExceptionHandler(options => { });
 app.UseCatalogModule()
     .UseBasketModule()
     .UseOrderingModule();

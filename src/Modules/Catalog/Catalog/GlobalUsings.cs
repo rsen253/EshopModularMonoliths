@@ -11,6 +11,7 @@ global using Microsoft.EntityFrameworkCore.Diagnostics;
 global using Carter;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Routing;
+global using FluentValidation;
 
 global using Shared.DDD;
 global using Catalog.Products.Models;
@@ -22,4 +23,5 @@ global using Catalog.Data.Seed;
 global using Shared.Data.Interceptor;
 global using Catalog.Products.Dtos;
 global using Shared.CQRS;
+global using Shared.Exceptions;
 
