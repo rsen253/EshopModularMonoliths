@@ -1,4 +1,5 @@
 ﻿global using Carter;
+global using Serilog;
 
 global using Catalog;
 global using Basket;
