@@ -1,16 +1,23 @@
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, config) =>
     config.ReadFrom.Configuration(context.Configuration));
 
-builder.Services.AddCarterWithAssemblies(typeof(CatalogModule).Assembly);
+var catalogAssembly = typeof(CatalogModule).Assembly;
+var basketAssembly = typeof(BasketModule).Assembly;
+
+builder.Services.
+    AddCarterWithAssemblies(
+    catalogAssembly,
+    basketAssembly);
 
 // add service configuration. This will register services in the DI
 builder.Services
     .AddCatalogModule(builder.Configuration)
     .AddBasketModule(builder.Configuration)
     .AddOrderingModule(builder.Configuration);
+
+builder.Services.AddMediatRWithAssemblies(catalogAssembly, basketAssembly);
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 

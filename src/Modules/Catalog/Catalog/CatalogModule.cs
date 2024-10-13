@@ -9,14 +9,7 @@ public static class CatalogModule
     {
         // Register your services 
 
-        // Data - infrastructure services
-        services.AddMediatR(config =>
-        {
-            config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            config.AddOpenBehavior(typeof(ValidationBehavior<,>));
-            config.AddOpenBehavior(typeof(LoggingBehavior<,>));
-        });
-        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        // Data - infrastructure services        
         var connectionString = configuration.GetConnectionString("Database");
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();

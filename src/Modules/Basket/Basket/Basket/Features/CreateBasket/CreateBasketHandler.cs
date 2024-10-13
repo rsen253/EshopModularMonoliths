@@ -32,15 +32,15 @@ internal class CreateBasketHandler(BasketDbContext dbContext)
             Guid.NewGuid(),
             shoppingCartDto.UserName);
 
-        shoppingCartDto.Items.ForEach(item =>
-        {
-            newBasket.AddItem(
-                item.ProductId,
-                item.Quantity,
-                item.Color,
-                item.Price,
-                item.ProductName);
-        });
+        //shoppingCartDto.Items.ForEach(item =>
+        //{
+        //    newBasket.AddItem(
+        //        item.ProductId,
+        //        item.Quantity,
+        //        item.Color,
+        //        item.Price,
+        //        item.ProductName);
+        //});
 
         return newBasket;
     }

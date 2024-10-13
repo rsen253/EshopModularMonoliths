@@ -16,3 +16,4 @@ global using Microsoft.AspNetCore.Mvc;
 
 global using Shared.Data.Seed;
 global using Shared.DDD;
+global using Shared.Behaviors;
