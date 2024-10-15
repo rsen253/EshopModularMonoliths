@@ -21,4 +21,4 @@ global using Shared.Data;
 global using Shared.CQRS;
 global using Shared.Exceptions;
 global using Basket.Basket.Exceptions;
-global using Basket.Basket.Features.AddItemIntoBasket;
+global using Basket.Data.Repository;
