@@ -25,3 +25,4 @@ global using Shared.CQRS;
 global using Shared.Exceptions;
 global using Basket.Basket.Exceptions;
 global using Basket.Data.Repository;
+global using Basket.Data.JsonConverters;

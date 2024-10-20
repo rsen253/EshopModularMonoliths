@@ -7,7 +7,7 @@ public class CachedBasketRepository(IBasketRepository repository, IDistributedCa
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-        //Converters = { new ShoppingCartConverter(), new ShoppingCartItemConverter() }
+        Converters = { new ShoppingCartConverter(), new ShoppingCartItemConverter() }
     };
 
     public async Task<ShoppingCart> GetBasket(string userName, bool asNoTracking = true, CancellationToken cancellationToken = default)

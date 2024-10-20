@@ -21,6 +21,11 @@ builder.Services.AddMediatRWithAssemblies(catalogAssembly, basketAssembly);
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
+
 // Configure HTTP request pipeline
 var app = builder.Build();
 
