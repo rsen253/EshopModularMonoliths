@@ -8,7 +8,7 @@ global using Microsoft.Extensions.Logging;
 global using Carter;
 global using System.Reflection;
 global using FluentValidation;
-global using Shared.CQRS;
+global using Shared.Contracts.CQRS;
 global using System.Diagnostics;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Http;

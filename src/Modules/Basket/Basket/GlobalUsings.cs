@@ -21,7 +21,7 @@ global using Basket.Basket.Models;
 global using Basket.Data;
 global using Shared.Data.Interceptor;
 global using Shared.Data;
-global using Shared.CQRS;
+global using Shared.Contracts.CQRS;
 global using Shared.Exceptions;
 global using Basket.Basket.Exceptions;
 global using Basket.Data.Repository;

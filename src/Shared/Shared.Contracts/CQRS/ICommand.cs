@@ -1,4 +1,6 @@
-﻿namespace Shared.CQRS;
+﻿using MediatR;
+
+namespace Shared.Contracts.CQRS;
 
 public interface ICommand : ICommand<Unit>
 {

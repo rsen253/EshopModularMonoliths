@@ -21,7 +21,8 @@ global using Shared.Data;
 global using Shared.Data.Seed;
 global using Catalog.Data.Seed;
 global using Shared.Data.Interceptor;
-global using Catalog.Products.Dtos;
-global using Shared.CQRS;
+global using Catalog.Contracts.Products.Features.Dtos;
+global using Shared.Contracts.CQRS;
 global using Shared.Exceptions;
-
+global using Catalog.Contracts.Products.Features.Dtos;
+global using Catalog.Contracts.Products.Features;
